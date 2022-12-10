@@ -41,9 +41,18 @@ jobs:
         with:
           path: node_modules
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+#      - name: Install dependencies
+#        if: steps.cache.outputs.cache-hit != 'true'
+#        run: npm ci
       - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: npm ci
+        run: |
+          if [ -e yarn.lock ]; then
+          yarn install --frozen-lockfile
+          elif [ -e package-lock.json ]; then
+          npm ci
+          else
+          npm i
+          fi  
       - name: Test code
         id: run-tests
         run: npm run test
@@ -65,9 +74,18 @@ jobs:
         with:
           path: node_modules
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+#      - name: Install dependencies
+#        if: steps.cache.outputs.cache-hit != 'true'
+#        run: npm ci
       - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: npm ci
+        run: |
+          if [ -e yarn.lock ]; then
+          yarn install --frozen-lockfile
+          elif [ -e package-lock.json ]; then
+          npm ci
+          else
+          npm i
+          fi  
       - name: Build website
         run: npm run build
       - name: Upload artifacts
