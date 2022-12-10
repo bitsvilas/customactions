@@ -17,18 +17,17 @@ jobs:
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
 #To avoid: npm ERR! The `npm ci` command can only install with an existing package-lock.json or          
       - name: Install dependencies
-         run: npm i
-#        run: |
-#          if [ -e yarn.lock ]; then
-#          yarn install --frozen-lockfile
-#          elif [ -e package-lock.json ]; then
-#          npm ci
-#          else
-#          npm i
-#          fi          
-      - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: npm ci
+        run: |
+          if [ -e yarn.lock ]; then
+          yarn install --frozen-lockfile
+          elif [ -e package-lock.json ]; then
+          npm ci
+          else
+          npm i
+          fi          
+#      - name: Install dependencies
+#        if: steps.cache.outputs.cache-hit != 'true'
+#        run: npm ci
       - name: Lint code
         run: npm run lint
   test:
