@@ -69,6 +69,7 @@ jobs:
   jsaction:
     runs-on: ubuntu-latest
     steps: 
+#unless you checkout action.yml will not be available to the actions.    
       - name: Get code
         uses: actions/checkout@v3
       - name: Run custom javascript action
