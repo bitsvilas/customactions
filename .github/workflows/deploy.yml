@@ -24,6 +24,7 @@ jobs:
       - name: Get code
         uses: actions/checkout@v3
       - name: Load & cache dependencies
+#this would default to use cache since with - caching: false is not mentioned.      
         uses: ./.github/actions/cached-deps
       - name: Test code
         id: run-tests
