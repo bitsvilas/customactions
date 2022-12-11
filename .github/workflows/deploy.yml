@@ -70,5 +70,5 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - name: Run custom javascript action
-        uses: ./.github/actions/javascriptaction
+        uses: ./.github/actions/javascriptaction/
         
