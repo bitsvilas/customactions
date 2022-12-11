@@ -65,10 +65,3 @@ jobs:
         run: ls
       - name: Deploy site
         run: echo "Deploying..."
-#custom javascript actions/cached-deps
-  jsaction:
-    runs-on: ubuntu-latest
-    steps: 
-      - name: Run custom javascript action
-        uses: ./.github/actions/javascriptaction
-        
