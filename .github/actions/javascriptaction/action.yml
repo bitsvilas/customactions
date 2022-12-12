@@ -1,7 +1,7 @@
 name: 'Simple javascript action'
 description: 'Simple javascript action'
 runs:
-  using: 'node16'
+  using: 'node18'
 #using: distinguishes the type of action.
 #options are composite, docker and node<version>
 #for <version> in node check the documentation to see what are currently supported. Check runs.using at below 
