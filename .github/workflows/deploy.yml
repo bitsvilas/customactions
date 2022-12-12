@@ -72,6 +72,9 @@ jobs:
 #unless you checkout action.yml will not be available to the actions.    
       - name: Get code
         uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
       - name: Run custom javascript action
         uses: ./.github/actions/javascriptaction
         
